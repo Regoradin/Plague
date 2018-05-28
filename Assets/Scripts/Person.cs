@@ -13,7 +13,7 @@ public class Person : MonoBehaviour {
 	public GameObject work;
 	public GameObject home;
 
-    private float disease = 0;
+    public float disease = 0;
     public float disease_rate = .01f;
 
     public float infection_rate = .5f;
@@ -21,23 +21,31 @@ public class Person : MonoBehaviour {
 
     public GameObject corpse;
 
-    private void Start () {
+    private void Awake()
+    {
         rend = GetComponent<Renderer>();
 
         nav_agent = GetComponent<NavMeshAgent>();
-		dest_obj = work;
 
-		rend.material.color = new Color(1f, 1f, 1f);
+        rend.material.color = new Color(1f, 1f, 1f);
 
-        foreach(CapsuleCollider collider in GetComponentsInChildren<CapsuleCollider>())
+        int plagueMask = NavMesh.GetAreaFromName("Plague");
+        int healthyMask = NavMesh.GetAreaFromName("Healthy");
+        nav_agent.areaMask = nav_agent.areaMask | (1 << healthyMask);
+        nav_agent.areaMask = nav_agent.areaMask & ~(1 << plagueMask);
+
+
+    }
+
+    private void Start()
+    {
+        dest_obj = work;
+
+        foreach (Cough cough in GetComponentsInChildren<Cough>())
         {
-            if (collider.GetComponent<Cough>())
-            {
-                collider.radius = cough_radius;
-            }
+            cough.Radius = cough_radius;
         }
-
-	}
+    }
 
     void Update()
     {
@@ -71,6 +79,12 @@ public class Person : MonoBehaviour {
 
     private IEnumerator Disease()
     {
+        //sets navigation mask to plague and not healthy
+        int plagueMask = NavMesh.GetAreaFromName("Plague");
+        int healthyMask = NavMesh.GetAreaFromName("Healthy");
+        nav_agent.areaMask = nav_agent.areaMask | (1 << plagueMask);
+        nav_agent.areaMask = nav_agent.areaMask & ~(1 << healthyMask);
+
         while (disease < 1)
         {
             disease += disease_rate;
@@ -90,7 +104,7 @@ public class Person : MonoBehaviour {
         Instantiate(corpse, new Vector3(transform.position.x, 0, transform.position.z) , Quaternion.Euler(90, 0, Random.Range(0, 360)));
     }
 
-    public void GIVE_DISEASE()
+    public void Infect()
     {
         StartCoroutine(Disease());
     }

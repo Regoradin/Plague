@@ -5,13 +5,32 @@ using UnityEngine;
 public class Cough : MonoBehaviour {
 
     public Person person;
-    private Collider coll;
+    private CapsuleCollider coll;
+    private ParticleSystem particle;
     public float delay;
 
-    private void Start()
+    private float radius;
+    public float Radius
+    {
+        get
+        {
+            return radius;
+        }
+        set
+        {
+            radius = value;
+            coll.radius = radius;
+
+            var main = particle.main;
+            main.startSpeed = (radius / 2) - 1;
+        }
+    }
+
+    private void Awake()
     {
         person = GetComponentInParent<Person>();
-        coll = GetComponent<Collider>();
+        coll = GetComponent<CapsuleCollider>();
+        particle = GetComponent<ParticleSystem>();
 
         StartCoroutine(ToggleCollider());
     }
@@ -28,6 +47,10 @@ public class Cough : MonoBehaviour {
             else
             {
                 coll.enabled = true;
+                if (person.disease > 0)
+                {
+                    particle.Play();
+                }
                 //this ensures that it is only enabled for one physics frame, and thus only coughs on people once. 
                 yield return new WaitForFixedUpdate();
             }

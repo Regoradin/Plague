@@ -10,6 +10,8 @@ public class PersonGenerator : MonoBehaviour {
 	public List<GameObject> works;
 
 	private float last_time = 0;
+
+    bool HAS_DISEASED = false;
 	
 	void Update () {
 		if(Time.time >= last_time + delay)
@@ -22,6 +24,17 @@ public class PersonGenerator : MonoBehaviour {
 
 			i = Random.Range(0, works.Count);
 			new_person.work = works[i];
+
+            if (!HAS_DISEASED)
+            {
+                if(Random.Range(0, 2) == 1)
+                {
+                    Debug.Log("Giving disease");
+                    new_person.GIVE_DISEASE();
+                    HAS_DISEASED = true;
+                }
+            }
+
 		}
 	}
 }

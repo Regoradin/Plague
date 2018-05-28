@@ -35,9 +35,9 @@ public class Building : MonoBehaviour {
 	private IEnumerator ReleasePerson(Person person, Vector3 release_pos, float delay)
 	{
 		yield return new WaitForSeconds(delay);
-		person.nav_agent.enabled = true;
 
 		person.nav_agent.Warp(release_pos);
+		person.nav_agent.enabled = true;
 
 		switch ((int)destination)
 		{

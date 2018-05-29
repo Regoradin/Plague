@@ -44,7 +44,6 @@ public class ConstructionController : MonoBehaviour {
         Placeable placeable = obj.GetComponent<Placeable>();
         if (placeable.is_placeable)
         {
-            Debug.Log("Building");
             placeable.Build();
             obj = null;
         }

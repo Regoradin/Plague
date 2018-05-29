@@ -12,7 +12,7 @@ public class Placeable : MonoBehaviour {
     public float redderness;
     public float alphaness;
 
-    private void Awake()
+    protected void Awake()
     {
         foreach(NavMeshObstacle obst in GetComponentsInChildren<NavMeshObstacle>())
         {
@@ -33,7 +33,6 @@ public class Placeable : MonoBehaviour {
             {
                 foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                 {
-                    Debug.Log("Getting redder with " + other.name);
                     rend.material.color += new Color(redderness, 0, 0);
                     redder = true;
                 }
@@ -49,7 +48,6 @@ public class Placeable : MonoBehaviour {
             {
                 foreach (Renderer rend in GetComponentsInChildren<Renderer>())
                 {
-                    Debug.Log("Getting less red with " + other.name);
                     rend.material.color -= new Color(redderness, 0, 0);
                     redder = false;
                 }
@@ -57,7 +55,7 @@ public class Placeable : MonoBehaviour {
         }
     }
 
-    public void Build()
+    public virtual void Build()
     {
         foreach (NavMeshObstacle obst in GetComponentsInChildren<NavMeshObstacle>())
         {

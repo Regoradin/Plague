@@ -75,7 +75,6 @@ public class Person : MonoBehaviour {
     /// </summary>
     private void ChooseDest()
     {
-        Debug.Log("Choosing Dest");
         int i = Random.Range(0, work.doors.Count);
         GameObject dest = work.doors[i];
         dest_building = work;

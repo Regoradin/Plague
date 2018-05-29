@@ -10,6 +10,9 @@ public class PlaceableWall : Placeable {
     private bool moused_up = false;
 
     public float cost_per_unit;
+    public float sell_value_per_unit;
+
+    private bool placed = false;
 
     private new void Awake()
     {
@@ -26,7 +29,7 @@ public class PlaceableWall : Placeable {
     private void Update()
     {
         //This takes over the control of following mouse movement etc. from the ConstructionController after the first point has been chosen. Surely that won't cause any issues... right?
-        if(first_pos_set)
+        if(first_pos_set && !placed)
         {
             if(!moused_up && Input.GetMouseButtonUp(0))
             {
@@ -50,6 +53,8 @@ public class PlaceableWall : Placeable {
             if (Input.GetMouseButtonDown(0) && moused_up && is_placeable)
             {
                 cost = cost_per_unit * distance;
+                sell_value = sell_value_per_unit * distance;
+                placed = true;
                 base.Build();
             }
             if (Input.GetMouseButtonDown(1))

@@ -10,6 +10,7 @@ public class Placeable : MonoBehaviour {
     private bool redder = false;
 
     public float cost;
+    public float sell_value;
 
     public float redderness;
     public float alphaness;
@@ -77,7 +78,12 @@ public class Placeable : MonoBehaviour {
             rend.material.color += new Color(0, 0, 0, alphaness);
         }
 
-        Destroy(this);
+    }
+
+    public void Bulldoze()
+    {
+        MoneyManager.Money += sell_value;
+        Destroy(gameObject);
     }
 
 }

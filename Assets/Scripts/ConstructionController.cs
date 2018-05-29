@@ -7,6 +7,10 @@ public class ConstructionController : MonoBehaviour {
     private Camera cam;
 
     private GameObject obj;
+    private bool bulldozing = false;
+
+    public Texture2D build_cursor;
+    public Texture2D bulldoze_cursor;
 
     void Start()
     {
@@ -15,28 +19,70 @@ public class ConstructionController : MonoBehaviour {
 
     void Update()
     {
-        if (obj)
+        if (obj || bulldozing)
         {
+            int layer_mask = Physics.DefaultRaycastLayers;
+            if (bulldozing)
+            {
+                //bulldozing needs to see things that typically ignore raycasts, because it needs to be able to see buildings
+                layer_mask = layer_mask | (1 << 2);
+            }
+
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            Physics.Raycast(ray, out hit);
+            Physics.Raycast(ray, out hit, maxDistance:Mathf.Infinity, layerMask:layer_mask);
 
-            obj.transform.position = new Vector3(hit.point.x, 0, hit.point.z);
+            if (obj)
+            {
+                Cursor.SetCursor(build_cursor, Vector2.zero, CursorMode.Auto);
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                Build();
+                obj.transform.position = new Vector3(hit.point.x, 0, hit.point.z);
+
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Build();
+                }
+                if (Input.GetMouseButtonDown(1))
+                {
+                    Destroy(obj);
+                }
             }
-            if (Input.GetMouseButtonDown(1))
+            if (bulldozing)
             {
-                Destroy(obj);
+                Cursor.SetCursor(bulldoze_cursor, Vector2.zero, CursorMode.Auto);
+
+                if (Input.GetMouseButtonDown(0) && hit.collider)
+                {
+                    Placeable placeable = hit.collider.GetComponentInParent<Placeable>();
+                    if (placeable)
+                    {
+                        placeable.Bulldoze();
+                        bulldozing = false;
+                    }
+
+                }
+                if (Input.GetMouseButtonDown(1))
+                {
+                    bulldozing = false;
+                }
             }
+        }
+        else
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }
 
     public void Select(GameObject prefab)
     {
         obj = Instantiate(prefab);
+        bulldozing = false;
+    }
+
+    public void Bulldoze()
+    {
+        bulldozing = true;
+        Destroy(obj);
     }
 
     private void Build()

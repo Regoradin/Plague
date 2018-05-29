@@ -7,7 +7,6 @@ public class Person : MonoBehaviour {
 
     private Renderer rend;
     private GPS gps;
-    private MoneyManager money_man;
 
 	public NavMeshAgent nav_agent;
 
@@ -35,9 +34,8 @@ public class Person : MonoBehaviour {
 
     private void Awake()
     {
-        gps = GameObject.Find("GPS").GetComponent<GPS>();
-        money_man = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
         rend = GetComponent<Renderer>();
+        gps = GameObject.Find("GPS").GetComponent<GPS>();
 
         nav_agent = GetComponent<NavMeshAgent>();
 
@@ -117,7 +115,7 @@ public class Person : MonoBehaviour {
         {
             while(happy > happy_thresh_low && sleep > sleep_thresh_low)
             {
-                money_man.money += dest_building.income;
+                MoneyManager.Money += dest_building.income;
                 sleep += dest_building.sleep;
                 happy += dest_building.happy;
 
@@ -128,7 +126,7 @@ public class Person : MonoBehaviour {
         {
             while(sleep < sleep_thresh_high)
             {
-                money_man.money += dest_building.income;
+                MoneyManager.Money += dest_building.income;
                 sleep += dest_building.sleep;
                 happy += dest_building.happy;
 
@@ -139,7 +137,7 @@ public class Person : MonoBehaviour {
         {
             while(happy < happy_thresh_high && sleep > sleep_thresh_low)
             {
-                money_man.money += dest_building.income;
+                MoneyManager.Money += dest_building.income;
                 sleep += dest_building.sleep;
                 happy += dest_building.happy;
 

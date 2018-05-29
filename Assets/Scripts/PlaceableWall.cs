@@ -9,6 +9,8 @@ public class PlaceableWall : Placeable {
     private Camera cam;
     private bool moused_up = false;
 
+    public float cost_per_unit;
+
     private new void Awake()
     {
         base.Awake();
@@ -38,7 +40,8 @@ public class PlaceableWall : Placeable {
             Vector3 second_pos = new Vector3(hit.point.x, 0, hit.point.z);
 
             transform.position = (first_pos + second_pos) / 2;
-            transform.localScale = new Vector3(Vector3.Distance(first_pos, second_pos), transform.localScale.y, transform.localScale.z);
+            float distance = Vector3.Distance(first_pos, second_pos);
+            transform.localScale = new Vector3(distance, transform.localScale.y, transform.localScale.z);
 
             float angle = Mathf.Atan2(second_pos.z - first_pos.z, first_pos.x - second_pos.x);
             angle *= Mathf.Rad2Deg;
@@ -46,6 +49,7 @@ public class PlaceableWall : Placeable {
 
             if (Input.GetMouseButtonDown(0) && moused_up && is_placeable)
             {
+                cost = cost_per_unit * distance;
                 base.Build();
             }
             if (Input.GetMouseButtonDown(1))

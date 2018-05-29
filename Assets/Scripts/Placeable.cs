@@ -9,6 +9,8 @@ public class Placeable : MonoBehaviour {
     public bool is_placeable = true;
     private bool redder = false;
 
+    public float cost;
+
     public float redderness;
     public float alphaness;
 
@@ -57,6 +59,15 @@ public class Placeable : MonoBehaviour {
 
     public virtual void Build()
     {
+        if(MoneyManager.Money >= cost)
+        {
+            MoneyManager.Money -= cost;
+        }
+        else
+        {
+            return;
+        }
+
         foreach (NavMeshObstacle obst in GetComponentsInChildren<NavMeshObstacle>())
         {
             obst.enabled = true;
@@ -65,6 +76,7 @@ public class Placeable : MonoBehaviour {
         {
             rend.material.color += new Color(0, 0, 0, alphaness);
         }
+
         Destroy(this);
     }
 

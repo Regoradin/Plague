@@ -42,8 +42,9 @@ public class ConstructionController : MonoBehaviour {
     private void Build()
     {
         Placeable placeable = obj.GetComponent<Placeable>();
-        if (placeable.is_placeable)
+        if (placeable.is_placeable && MoneyManager.Money >= placeable.cost)
         {
+            //cost can't be subtracted from money here because it might change with wall type placeables.
             placeable.Build();
             obj = null;
         }

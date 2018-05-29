@@ -25,9 +25,9 @@ GameObject:
   - component: {fileID: 195050029256714342}
   - component: {fileID: 54684668949069930}
   - component: {fileID: 114642720194942740}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Person
-  m_TagString: Untagged
+  m_TagString: Intersectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 114209537055858372}
   - component: {fileID: 198792559721755886}
   - component: {fileID: 199344150832233096}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cough
-  m_TagString: Untagged
+  m_TagString: Intersectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114301662783385444}
   m_Layer: 2
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Intersectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,8 +126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_placeable: 1
+  cost: 0
   redderness: 0.3
   alphaness: 0.5
+  cost_per_unit: 1
 --- !u!208 &208340123550598862
 NavMeshObstacle:
   m_ObjectHideFlags: 1

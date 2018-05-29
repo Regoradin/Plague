@@ -28,7 +28,7 @@ public class Placeable : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (is_placeable && other.tag != "Intersectable")
+        if (is_placeable && other.tag != "Intersectable" && this.tag != "Intersectable")
         {
             is_placeable = false;
             if (!redder)

@@ -6,12 +6,14 @@ using UnityEngine.AI;
 public class Person : MonoBehaviour {
 
     private Renderer rend;
+    private GPS gps;
+    private MoneyManager money_man;
 
 	public NavMeshAgent nav_agent;
-	public GameObject dest_obj;
 
-	public GameObject work;
-	public GameObject home;
+    public Building dest_building;
+	public Building work;
+	public Building home;
 
     public float disease = 0;
     public float disease_rate = .01f;
@@ -21,8 +23,20 @@ public class Person : MonoBehaviour {
 
     public GameObject corpse;
 
+    private float happy;
+    private float sleep;
+
+    private float happy_thresh_low;
+    private float happy_thresh_high;
+    private float sleep_thresh_low;
+    private float sleep_thresh_high;
+
+    public float ambient_sleep_loss;
+
     private void Awake()
     {
+        gps = GameObject.Find("GPS").GetComponent<GPS>();
+        money_man = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
         rend = GetComponent<Renderer>();
 
         nav_agent = GetComponent<NavMeshAgent>();
@@ -34,26 +48,123 @@ public class Person : MonoBehaviour {
         nav_agent.areaMask = nav_agent.areaMask | (1 << healthyMask);
         nav_agent.areaMask = nav_agent.areaMask & ~(1 << plagueMask);
 
+        //Set initial happy and sleep values and thresholds.
+        happy = .1f;
+        happy_thresh_low = .2f + Random.Range(-.19f, .2f);
+        happy_thresh_high = .5f + Random.Range(-.1f, .1f);
+        if(happy_thresh_low >= happy_thresh_high)
+        {
+            happy_thresh_low = happy_thresh_high - .1f;
+        }
+        sleep = 1;
+        sleep_thresh_low = .2f + Random.Range(-.1f, .1f);
+        sleep_thresh_high = .6f + Random.Range(0f, .3f);
 
+        StartCoroutine(BeAwake());
     }
 
     private void Start()
     {
-        dest_obj = work;
-
         foreach (Cough cough in GetComponentsInChildren<Cough>())
         {
             cough.Radius = cough_radius;
         }
+        ChooseDest();
+    }
+    
+    /// <summary>
+    /// Chooses the destination as home if tired, a park if sad, and work otherwise.
+    /// </summary>
+    private void ChooseDest()
+    {
+        Debug.Log("Choosing Dest");
+        int i = Random.Range(0, work.doors.Count);
+        GameObject dest = work.doors[i];
+        dest_building = work;
+
+        if(sleep < sleep_thresh_low)
+        {
+            int j = Random.Range(0, home.doors.Count);
+            dest = home.doors[j];
+            dest_building = home;
+        }
+        else if (happy < happy_thresh_low)
+        {
+            int j = Random.Range(0, gps.parks.Count);
+            dest = gps.parks[j].doors[0];
+            dest_building = gps.parks[j];
+        }
+
+        nav_agent.SetDestination(dest.transform.position);
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        if (nav_agent.enabled)
+        if (dest_building.doors.Contains(other.gameObject))
         {
-            nav_agent.SetDestination(dest_obj.transform.position);
+            StartCoroutine(DoBuilding());
         }
     }
+
+    private IEnumerator DoBuilding()
+    {
+        //Enter Building
+        nav_agent.enabled = false;
+        nav_agent.Warp(dest_building.inside.position);
+
+        //Do things in building
+        if(dest_building == work)
+        {
+            while(happy > happy_thresh_low && sleep > sleep_thresh_low)
+            {
+                money_man.money += dest_building.income;
+                sleep += dest_building.sleep;
+                happy += dest_building.happy;
+
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else if(dest_building == home)
+        {
+            while(sleep < sleep_thresh_high)
+            {
+                money_man.money += dest_building.income;
+                sleep += dest_building.sleep;
+                happy += dest_building.happy;
+
+                yield return new WaitForSeconds(1f);
+            }
+        }
+        else
+        {
+            while(happy < happy_thresh_high && sleep > sleep_thresh_low)
+            {
+                money_man.money += dest_building.income;
+                sleep += dest_building.sleep;
+                happy += dest_building.happy;
+
+                yield return new WaitForSeconds(1f);
+            }
+        }
+
+        //Leave Building
+        int i = Random.Range(0, dest_building.doors.Count);
+        nav_agent.Warp(dest_building.doors[i].transform.position);
+        nav_agent.enabled = true;
+
+        ChooseDest();
+
+    }
+
+    private IEnumerator BeAwake()
+    {
+        while (true)
+        {
+            sleep -= ambient_sleep_loss;
+            yield return new WaitForSeconds(1);
+        }
+    }
+
 
     /// <summary>
     /// To be called on people who have been coughed upon by some other person.

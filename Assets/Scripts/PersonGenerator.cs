@@ -6,8 +6,8 @@ public class PersonGenerator : MonoBehaviour {
 
 	public GameObject person;
 	public float delay;
-	public List<GameObject> homes;
-	public List<GameObject> works;
+	public List<Building> homes;
+	public List<Building> works;
 
 	private float last_time = 0;
 

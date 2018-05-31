@@ -12,7 +12,6 @@ public class HospitalAttractor : MonoBehaviour {
 		{
 			if(person.disease > 0 && !person.Recently_cured)
 			{
-				Debug.Log("attrating with disease: " + person.disease);
 				person.nav_agent.SetDestination(transform.parent.GetComponent<Collider>().bounds.center);
 			}
 		}

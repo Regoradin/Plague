@@ -32,7 +32,7 @@ public class Person : MonoBehaviour {
 
     public float ambient_sleep_loss;
 
-	private bool recently_cured;
+	public bool recently_cured;
 	public bool Recently_cured
 	{
 		get
@@ -212,7 +212,10 @@ public class Person : MonoBehaviour {
         nav_agent.areaMask = nav_agent.areaMask | (1 << plagueMask);
         nav_agent.areaMask = nav_agent.areaMask & ~(1 << healthyMask);
 
-        while (disease < 1)
+		//initial increase of disease so that it won't be treated as cured
+		disease += disease_rate;
+
+        while (disease < 1 && disease > 0)
         {
             disease += disease_rate;
             rend.material.color = new Color(1f - disease, 1f - (disease/3), 1f - disease);
@@ -220,7 +223,10 @@ public class Person : MonoBehaviour {
             yield return new WaitForSeconds(1);
         }
 
-        Die();
+		if (disease >= 1)
+		{
+			Die();
+		}
     }
 
     public void Die()

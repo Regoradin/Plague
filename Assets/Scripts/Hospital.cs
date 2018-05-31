@@ -25,7 +25,7 @@ public class Hospital : MonoBehaviour {
 	private void OnTriggerEnter(Collider other)
 	{
 		Person person = other.GetComponent<Person>();
-		if (person)
+		if (person && !person.Recently_cured)
 		{
 			person.nav_agent.enabled = false;
 			person.nav_agent.Warp(inside.position);
@@ -38,7 +38,6 @@ public class Hospital : MonoBehaviour {
 	private IEnumerator Cure(Person person)
 	{
 		yield return new WaitUntil(() => persons_waiting[0] == person && !busy);
-		busy = true;
 		yield return new WaitForSeconds(wait_time);
 
 		if (MoneyManager.Money >= cost)
@@ -47,7 +46,7 @@ public class Hospital : MonoBehaviour {
 			person.disease -= cure_amount;
 			if (!will_cure && person.disease <= 0)
 			{
-				person.disease = .00001f;
+				person.disease = person.disease_rate;
 			}
 			if (will_cure && person.disease <= min_to_cure)
 			{
@@ -55,7 +54,6 @@ public class Hospital : MonoBehaviour {
 			}
 		}
 		persons_waiting.Remove(person);
-		busy = false;
 
 		person.SetCureTimer(cure_cooldown);
 

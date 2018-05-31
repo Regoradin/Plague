@@ -165,10 +165,11 @@ MonoBehaviour:
   home: {fileID: 0}
   disease: 0
   disease_rate: 0.03
-  infection_rate: 0.5
+  infection_rate: 0
   cough_radius: 3
   corpse: {fileID: 1280437123991278, guid: b9f7ece3646a65646a080a944016f86e, type: 2}
   ambient_sleep_loss: -0.001
+  recently_cured: 0
 --- !u!136 &136548003957162194
 CapsuleCollider:
   m_ObjectHideFlags: 1

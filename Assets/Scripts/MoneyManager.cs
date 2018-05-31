@@ -21,19 +21,10 @@ public class MoneyManager : MonoBehaviour {
 
     public float starting_money;
 
-    private Text text;
-
     private void Start()
     {
         money += starting_money;
-        text = GetComponent<Text>();
     }
-    private void Update()
-    {
-        if (text)
-        {
-            text.text = "$" + money.ToString();
-        }
-    }
+
 
 }

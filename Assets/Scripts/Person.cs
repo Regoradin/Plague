@@ -7,7 +7,6 @@ public class Person : MonoBehaviour {
 
     private Renderer rend;
     private GPS gps;
-
 	public NavMeshAgent nav_agent;
 
     public Building dest_building;
@@ -55,6 +54,7 @@ public class Person : MonoBehaviour {
     {
         rend = GetComponent<Renderer>();
         gps = GameObject.Find("GPS").GetComponent<GPS>();
+		PersonManager.population.Add(this);
 
         nav_agent = GetComponent<NavMeshAgent>();
 
@@ -231,9 +231,9 @@ public class Person : MonoBehaviour {
 
     public void Die()
     {
-        Debug.Log("Dieing");
         Destroy(gameObject);
 
+		PersonManager.population.Remove(this);
         Instantiate(corpse, new Vector3(transform.position.x, 0, transform.position.z) , Quaternion.Euler(90, 0, Random.Range(0, 360)));
     }
 

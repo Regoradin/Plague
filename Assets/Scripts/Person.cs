@@ -32,6 +32,25 @@ public class Person : MonoBehaviour {
 
     public float ambient_sleep_loss;
 
+	private bool recently_cured;
+	public bool Recently_cured
+	{
+		get
+		{
+			return recently_cured;
+		}
+	}
+	public void SetCureTimer(float time)
+	{
+		StartCoroutine(CureTimer(time));
+	}
+	private  IEnumerator CureTimer(float time)
+	{
+		recently_cured = true;
+		yield return new WaitForSeconds(time);
+		recently_cured = false;
+	}
+
     private void Awake()
     {
         rend = GetComponent<Renderer>();
@@ -73,7 +92,7 @@ public class Person : MonoBehaviour {
     /// <summary>
     /// Chooses the destination as home if tired, a park if sad, and work otherwise.
     /// </summary>
-    private void ChooseDest()
+    public void ChooseDest()
     {
         int i = Random.Range(0, work.doors.Count);
         GameObject dest = work.doors[i];

@@ -23,7 +23,7 @@ public class MoneyManager : MonoBehaviour {
 
     private void Start()
     {
-        money += starting_money;
+        money = starting_money;
     }
 
 

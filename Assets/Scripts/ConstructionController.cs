@@ -12,6 +12,8 @@ public class ConstructionController : MonoBehaviour {
     public Texture2D build_cursor;
     public Texture2D bulldoze_cursor;
 
+	public float rot_inc;
+
     void Start()
     {
         cam = Camera.main;
@@ -46,6 +48,14 @@ public class ConstructionController : MonoBehaviour {
                 {
                     Destroy(obj);
                 }
+				if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetKeyDown("right"))
+				{
+					obj.transform.Rotate(Vector3.up * rot_inc);
+				}
+				if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetKey("left"))
+				{
+					obj.transform.Rotate(Vector3.up * -rot_inc);
+				}
             }
             if (bulldozing)
             {

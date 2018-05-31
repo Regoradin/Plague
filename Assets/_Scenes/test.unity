@@ -2776,6 +2776,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   build_cursor: {fileID: 2800000, guid: 919a041ebdb8fe446a6101376791b628, type: 3}
   bulldoze_cursor: {fileID: 2800000, guid: 2058ac077853043409645981a236843e, type: 3}
+  rot_inc: 45
 --- !u!4 &1804109796
 Transform:
   m_ObjectHideFlags: 0

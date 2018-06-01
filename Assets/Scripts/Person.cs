@@ -181,12 +181,19 @@ public class Person : MonoBehaviour {
         }
     }
 
+	private void Update()
+	{
+		if (nav_agent.isOnOffMeshLink)
+		{
+			nav_agent.currentOffMeshLinkData.offMeshLink.GetComponent<LinkDelayer>().AddPerson(this);
+		}
+	}
 
-    /// <summary>
-    /// To be called on people who have been coughed upon by some other person.
-    /// </summary>
-    /// <param name="other">The person inflicting the cough.</param>
-    public void CoughedUpon(Person other)
+	/// <summary>
+	/// To be called on people who have been coughed upon by some other person.
+	/// </summary>
+	/// <param name="other">The person inflicting the cough.</param>
+	public void CoughedUpon(Person other)
     {
         if (disease == 0 && other.disease > 0)
         {

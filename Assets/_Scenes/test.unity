@@ -404,6 +404,7 @@ GameObject:
   - component: {fileID: 226109155}
   - component: {fileID: 226109159}
   - component: {fileID: 226109160}
+  - component: {fileID: 226109161}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -506,10 +507,23 @@ OffMeshLink:
   m_AgentTypeID: 0
   m_Start: {fileID: 792521803}
   m_End: {fileID: 743996330}
-  m_CostOverride: 3
+  m_CostOverride: -1
   m_BiDirectional: 1
   m_Activated: 1
   m_AutoUpdatePositions: 0
+--- !u!114 &226109161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 226109154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daa36e0255c931b42afdf42cbe5eef23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  persons: []
+  delay: 2
 --- !u!1 &270134431
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +1514,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 758428833}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1866,7 +1880,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1093541872}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2359,9 +2373,9 @@ GameObject:
   - component: {fileID: 1502038769}
   - component: {fileID: 1502038771}
   - component: {fileID: 1502038770}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Attractor
-  m_TagString: Untagged
+  m_TagString: Intersectable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2520,7 +2534,7 @@ GameObject:
   - component: {fileID: 1560464855}
   - component: {fileID: 1560464854}
   - component: {fileID: 1560464853}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Hospital
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2543,7 +2557,7 @@ MonoBehaviour:
   cure_amount: 0.5
   will_cure: 1
   min_to_cure: 0.01
-  cost: 10
+  cost: 1
   wait_time: 2
   cure_cooldown: 10
 --- !u!136 &1560464854

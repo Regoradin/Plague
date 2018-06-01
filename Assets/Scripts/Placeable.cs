@@ -75,7 +75,7 @@ public class Placeable : MonoBehaviour {
         }
         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
         {
-            rend.material.color += new Color(0, 0, 0, alphaness)
+			rend.material.color += new Color(0, 0, 0, alphaness);
         }
 
 		Destructible destruct = gameObject.AddComponent<Destructible>();

@@ -60,7 +60,7 @@ public class PlaceableWall : Placeable {
                 Destroy(gameObject);
             }
 
-
+			
         }
 
     }

@@ -7,12 +7,16 @@ public class Person : MonoBehaviour {
 
     private Renderer rend;
     private GPS gps;
+	[HideInInspector]
 	public NavMeshAgent nav_agent;
 
+	[Header("Navigation Info")]
     public Building dest_building;
 	public Building work;
 	public Building home;
+	public bool in_building = false;
 
+	[Header("Disease Info")]
     public float disease = 0;
     public float disease_rate = .01f;
 
@@ -127,6 +131,7 @@ public class Person : MonoBehaviour {
         //Enter Building
         nav_agent.enabled = false;
         nav_agent.Warp(dest_building.inside.position);
+		in_building = true;
 
         //Do things in building
         if(dest_building == work)
@@ -167,6 +172,7 @@ public class Person : MonoBehaviour {
         int i = Random.Range(0, dest_building.doors.Count);
         nav_agent.Warp(dest_building.doors[i].transform.position);
         nav_agent.enabled = true;
+		in_building = false;
 
         ChooseDest();
 
@@ -205,7 +211,7 @@ public class Person : MonoBehaviour {
     }
     public void CoughedUpon(Corpse other)
     {
-        if(disease == 0)
+        if(disease == 0 && !nav_agent.isOnOffMeshLink)
         {
             StartCoroutine(Disease());
         }
@@ -241,6 +247,14 @@ public class Person : MonoBehaviour {
         Destroy(gameObject);
 
 		PersonManager.population.Remove(this);
+		PersonManager.deaths++;
+		if (in_building)
+		{
+			Debug.Log("Dieing in building");
+			//prevents corpses from piling up in the nether
+			int i = Random.Range(0, dest_building.doors.Count);
+			transform.position = dest_building.doors[i].transform.position;
+		}
         Instantiate(corpse, new Vector3(transform.position.x, 0, transform.position.z) , Quaternion.Euler(90, 0, Random.Range(0, 360)));
     }
 

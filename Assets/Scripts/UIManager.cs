@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour {
 	public Text money;
 	public Text population;
 	public Text infected;
+	public Text deaths;
 
 	private void Update()
 	{
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour {
 			}
 		}
 		infected.text = "Infected: " + infected_count;
+		deaths.text = "Deaths: " + PersonManager.deaths;
 	}
 
 }

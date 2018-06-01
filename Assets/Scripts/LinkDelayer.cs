@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LinkDelayer : MonoBehaviour {
 
-	public List<Person> persons;
+	private List<Person> persons;
 	public float delay;
 
 	private bool processing = false;
@@ -31,9 +31,9 @@ public class LinkDelayer : MonoBehaviour {
 		processing = true;
 		while(persons.Count != 0)
 		{
-			yield return new WaitForSeconds(delay);
 			persons[0].nav_agent.CompleteOffMeshLink();
 			persons.Remove(persons[0]);
+			yield return new WaitForSeconds(delay);
 		}
 		processing = false;
 	}

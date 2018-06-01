@@ -29,6 +29,7 @@ public class Hospital : MonoBehaviour {
 		{
 			person.nav_agent.enabled = false;
 			person.nav_agent.Warp(inside.position);
+			person.in_building = true;
 
 			persons_waiting.Add(person);
 			StartCoroutine(Cure(person));
@@ -59,6 +60,7 @@ public class Hospital : MonoBehaviour {
 
 		person.nav_agent.Warp(exit.position);
 		person.nav_agent.enabled = true;
+		person.in_building = false;
 		person.ChooseDest();
 
 	}

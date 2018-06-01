@@ -5,5 +5,6 @@ using UnityEngine;
 public class PersonManager : MonoBehaviour {
 
 	public static List<Person> population = new List<Person>();
+	public static int deaths = 0;
 
 }

@@ -127,9 +127,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   is_placeable: 1
   cost: 0
+  sell_value: 0
   redderness: 0.3
   alphaness: 0.5
-  cost_per_unit: 1
+  cost_per_unit: 2
+  sell_value_per_unit: 1
 --- !u!208 &208340123550598862
 NavMeshObstacle:
   m_ObjectHideFlags: 1

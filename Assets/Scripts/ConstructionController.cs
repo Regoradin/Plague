@@ -63,11 +63,14 @@ public class ConstructionController : MonoBehaviour {
 
                 if (Input.GetMouseButtonDown(0) && hit.collider)
                 {
-                    Placeable placeable = hit.collider.GetComponentInParent<Placeable>();
-                    if (placeable)
+                    Destructible destruct = hit.collider.GetComponentInParent<Destructible>();
+                    if (destruct)
                     {
-                        placeable.Bulldoze();
-                        bulldozing = false;
+                        destruct.Bulldoze();
+						if (!Input.GetKey("left shift"))
+						{
+							bulldozing = false;
+						}
                     }
 
                 }
@@ -83,11 +86,14 @@ public class ConstructionController : MonoBehaviour {
         }
     }
 
-    public void Select(GameObject prefab)
-    {
-        obj = Instantiate(prefab);
-        bulldozing = false;
-    }
+	public void Select(GameObject prefab)
+	{
+		if (!obj)
+		{
+			obj = Instantiate(prefab);
+			bulldozing = false;
+		}
+	}
 
     public void Bulldoze()
     {

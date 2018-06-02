@@ -32,11 +32,14 @@ public class Cough : MonoBehaviour {
         coll = GetComponent<CapsuleCollider>();
         particle = GetComponent<ParticleSystem>();
 
+		
         StartCoroutine(ToggleCollider());
     }
 
     private IEnumerator ToggleCollider()
     {
+		//prevents everyone's cough from being at the same time
+		yield return new WaitForSeconds(Random.Range(0, delay));
         while (true)
         {
             if (coll.enabled)

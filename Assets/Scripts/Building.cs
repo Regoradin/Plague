@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Building : MonoBehaviour {
 
+	public Transform inside;
+	public int capacity;
     public List<GameObject> doors;
-    public Transform inside;
 
     [Header("Change Per Second")]
     public float income;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Building : MonoBehaviour {
 
 	public Transform inside;
-	public int capacity;
+	public float capacity;
     public List<GameObject> doors;
 
     [Header("Change Per Second")]

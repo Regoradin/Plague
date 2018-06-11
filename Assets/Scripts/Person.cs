@@ -111,7 +111,8 @@ public class Person : MonoBehaviour {
         else if (happy < happy_thresh_low)
         {
             int j = Random.Range(0, gps.parks.Count);
-            dest = gps.parks[j].doors[0];
+            int k = Random.Range(0, gps.parks[j].doors.Count);
+            dest = gps.parks[j].doors[k];
             dest_building = gps.parks[j];
         }
 
@@ -131,7 +132,7 @@ public class Person : MonoBehaviour {
         //Enter Building
         nav_agent.enabled = false;
         nav_agent.Warp(dest_building.inside.position);
-		in_building = true;
+        in_building = true;
 
         //Do things in building
         if(dest_building == work)
@@ -172,8 +173,9 @@ public class Person : MonoBehaviour {
         int i = Random.Range(0, dest_building.doors.Count);
         nav_agent.Warp(dest_building.doors[i].transform.position);
         nav_agent.enabled = true;
-		in_building = false;
+        in_building = false;
 
+        yield return new WaitForEndOfFrame();
         ChooseDest();
 
     }

@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   person: {fileID: 0}
-  delay: 2
+  delay: 4
 --- !u!114 &114642720194942740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,6 +163,7 @@ MonoBehaviour:
   dest_building: {fileID: 0}
   work: {fileID: 0}
   home: {fileID: 0}
+  in_building: 0
   disease: 0
   disease_rate: 0.03
   infection_rate: 0.5
@@ -178,7 +179,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1597974083235960}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 5
   m_Height: 2
   m_Direction: 1
@@ -215,7 +216,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 29
   m_ObstacleAvoidanceType: 4
 --- !u!198 &198792559721755886
 ParticleSystem:

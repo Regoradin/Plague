@@ -11,11 +11,13 @@ public class ConstructionController : MonoBehaviour {
 
     public Texture2D build_cursor;
     public Texture2D bulldoze_cursor;
+    public CostLabel cost_label;
 
 	public float rot_inc;
 
     void Start()
     {
+        cost_label.gameObject.SetActive(false);
         cam = Camera.main;
     }
 
@@ -46,6 +48,7 @@ public class ConstructionController : MonoBehaviour {
                 }
                 if (Input.GetMouseButtonDown(1))
                 {
+                    cost_label.gameObject.SetActive(false);
                     Destroy(obj);
                 }
 				if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetKeyDown("right"))
@@ -92,8 +95,10 @@ public class ConstructionController : MonoBehaviour {
 		{
 			obj = Instantiate(prefab);
 			bulldozing = false;
-		}
-	}
+            cost_label.gameObject.SetActive(true);
+            cost_label.Obj = obj;
+        }
+    }
 
     public void Bulldoze()
     {
@@ -108,6 +113,7 @@ public class ConstructionController : MonoBehaviour {
         {
             //cost can't be subtracted from money here because it might change with wall type placeables.
             placeable.Build();
+            placeable.cost_label = cost_label;
             obj = null;
         }
     }

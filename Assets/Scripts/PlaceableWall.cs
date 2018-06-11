@@ -49,14 +49,16 @@ public class PlaceableWall : Placeable {
             angle *= Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, angle);
 
+            cost = cost_per_unit * distance;
+
             if (Input.GetMouseButtonDown(0) && moused_up && is_placeable)
             {
-                cost = cost_per_unit * distance;
                 sell_value = sell_value_per_unit * distance;
 				base.Build();
             }
             if (Input.GetMouseButtonDown(1))
             {
+                cost_label.gameObject.SetActive(false);
                 Destroy(gameObject);
             }
 

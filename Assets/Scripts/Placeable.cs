@@ -8,6 +8,8 @@ public class Placeable : MonoBehaviour {
     [HideInInspector]
     public bool is_placeable = true;
     private bool redder = false;
+    [HideInInspector]
+    public CostLabel cost_label;
 
     public float cost;
     public float sell_value;
@@ -80,8 +82,8 @@ public class Placeable : MonoBehaviour {
 
 		Destructible destruct = gameObject.AddComponent<Destructible>();
 		destruct.sell_value = sell_value;
+        cost_label.gameObject.SetActive(false);
 		Destroy(this);
-
     }
 
 }

@@ -126,11 +126,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_placeable: 1
+  cost_label: {fileID: 0}
   cost: 0
   sell_value: 0
   redderness: 0.3
   alphaness: 0.5
-  cost_per_unit: 2
+  cost_per_unit: 5
   sell_value_per_unit: 1
 --- !u!208 &208340123550598862
 NavMeshObstacle:

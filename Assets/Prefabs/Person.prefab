@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   person: {fileID: 0}
-  delay: 4
+  delay: 2
 --- !u!114 &114642720194942740
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,8 +165,8 @@ MonoBehaviour:
   home: {fileID: 0}
   in_building: 0
   disease: 0
-  disease_rate: 0.03
-  infection_rate: 0.5
+  disease_rate: 0.01
+  infection_rate: 0.005
   cough_radius: 3
   corpse: {fileID: 1280437123991278, guid: b9f7ece3646a65646a080a944016f86e, type: 2}
   ambient_sleep_loss: -0.001

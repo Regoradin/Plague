@@ -15,10 +15,11 @@ public class UIManager : MonoBehaviour {
 	public Text infected;
 	public Text deaths;
 	public Text days;
+    public Text cost_label;
 
 	private void Start()
 	{
-		texts = new List<Text> { money, population, infected, deaths, days };
+		texts = new List<Text> { money, population, infected, deaths, days, cost_label };
 	}
 
 	private void Update()

@@ -13,6 +13,8 @@ public class Level1 : MonoBehaviour {
 	public int population;
 	public GameObject spawn_box;
 
+    public int initial_infected;
+
 	private void Start()
 	{
 		homes = new List<Building>();
@@ -32,6 +34,7 @@ public class Level1 : MonoBehaviour {
 
 		for(int i  = 0; i < population; i++)
 		{
+
 			Vector3 position = new Vector3(Random.Range(-.5f, .5f), 0, Random.Range(-.5f, .5f));
 			position = spawn_box.transform.TransformPoint(position);
 
@@ -61,7 +64,14 @@ public class Level1 : MonoBehaviour {
                 }
             }
 
-		}
+
+            if (i < initial_infected)
+            {
+                person.Infect();
+                person.name = "INFECTED PERSON";
+            }
+
+        }
 	}
 
 }

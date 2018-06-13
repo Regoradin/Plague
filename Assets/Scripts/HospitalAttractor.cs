@@ -5,16 +5,28 @@ using UnityEngine;
 public class HospitalAttractor : MonoBehaviour {
 
 
-	private void OnTriggerEnter(Collider other)
+    private Collider parent_coll;
+
+    private void Start()
+    {
+        parent_coll = transform.parent.GetComponent<Collider>();
+    }
+
+    private void OnTriggerEnter(Collider other)
 	{
-		Person person = other.GetComponent<Person>();
-		if (person)
-		{
-			if(person.disease > 0 && !person.Recently_cured)
-			{
-				person.nav_agent.SetDestination(transform.parent.GetComponent<Collider>().bounds.center);
-			}
-		}
+        if (enabled)
+        {
+            Person person = other.GetComponent<Person>();
+            if (person)
+            {
+                if (person.disease > 0)
+                {
+                    Debug.Log("Attracting: " + person.name);
+                    person.nav_agent.SetDestination(parent_coll.bounds.center);
+                    person.going_to_hospital = true;
+                }
+            }
+        }
 	}
 
 }

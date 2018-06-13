@@ -19,6 +19,10 @@ public class Placeable : MonoBehaviour {
 
     protected void Awake()
     {
+        foreach(MonoBehaviour script in GetComponentsInChildren<MonoBehaviour>())
+        {
+            script.enabled = false;
+        }
         foreach(NavMeshObstacle obst in GetComponentsInChildren<NavMeshObstacle>())
         {
             obst.enabled = false;
@@ -71,7 +75,11 @@ public class Placeable : MonoBehaviour {
             cost_label.LowFunds();
             return;
         }
-
+        
+        foreach(MonoBehaviour script in GetComponentsInChildren<MonoBehaviour>())
+        {
+            script.enabled = true;
+        }
         foreach (NavMeshObstacle obst in GetComponentsInChildren<NavMeshObstacle>())
         {
             obst.enabled = true;

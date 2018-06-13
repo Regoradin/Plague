@@ -9,13 +9,12 @@ public class Hospital : MonoBehaviour {
 
 	public float cure_amount;
 	public bool will_cure;
-	public float min_to_cure;
+	public float max_curable;
 	public float cost;
 	public float wait_time;
 	public float cure_cooldown;
 
 	private List<Person> persons_waiting;
-	private bool busy = false;
 
 	private void Start()
 	{
@@ -24,21 +23,26 @@ public class Hospital : MonoBehaviour {
 
 	private void OnTriggerEnter(Collider other)
 	{
-		Person person = other.GetComponent<Person>();
-		if (person && !person.Recently_cured)
-		{
-			person.nav_agent.enabled = false;
-			person.nav_agent.Warp(inside.position);
-			person.in_building = true;
+        if (enabled)
+        {
+            Person person = other.GetComponent<Person>();
+            if (person && person.going_to_hospital)
+            {
+                person.going_to_hospital = false;
 
-			persons_waiting.Add(person);
-			StartCoroutine(Cure(person));
-		}
+                person.nav_agent.enabled = false;
+                person.nav_agent.Warp(inside.position);
+                person.in_building = true;
+
+                persons_waiting.Add(person);
+                StartCoroutine(Cure(person));
+            }
+        }
 	}
 
 	private IEnumerator Cure(Person person)
 	{
-		yield return new WaitUntil(() => persons_waiting[0] == person && !busy);
+		yield return new WaitUntil(() => persons_waiting[0] == person);
 		yield return new WaitForSeconds(wait_time);
 
 		if (MoneyManager.Money >= cost)
@@ -49,7 +53,7 @@ public class Hospital : MonoBehaviour {
 			{
 				person.disease = person.disease_rate;
 			}
-			if (will_cure && person.disease <= min_to_cure)
+			if (will_cure && person.disease <= max_curable)
 			{
 				person.disease = 0;
 			}
@@ -62,6 +66,7 @@ public class Hospital : MonoBehaviour {
 		person.nav_agent.enabled = true;
 		person.in_building = false;
 		person.ChooseDest();
+        Debug.Log(person.dest_building);
 
 	}
 }

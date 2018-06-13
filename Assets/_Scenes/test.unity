@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4497097, g: 0.49977833, b: 0.5756337, a: 1}
+  m_IndirectSpecularColor: {r: 0.44971025, g: 0.49977905, b: 0.5756352, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -357,7 +357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ea83c947df4d4bb028ce5163ffec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starting_money: 100
 --- !u!114 &86564251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,8 +652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a167b12366c11384ab87db99e2918581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doors: []
   inside: {fileID: 0}
+  capacity: 0
+  doors: []
   income: 0
   happy: 0
   sleep: 0
@@ -811,6 +811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74f8716fb77a46944a2958a3bb31d468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  park_parent: {fileID: 0}
   parks:
   - {fileID: 670398592}
 --- !u!1 &344310607
@@ -865,6 +866,7 @@ MonoBehaviour:
   infected: {fileID: 1136130327}
   deaths: {fileID: 1918930972}
   days: {fileID: 86564251}
+  cost_label: {fileID: 0}
 --- !u!1 &352388877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,9 +1264,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a167b12366c11384ab87db99e2918581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inside: {fileID: 1597186636}
+  capacity: 0
   doors:
   - {fileID: 1921105743}
-  inside: {fileID: 1597186636}
   income: 0
   happy: 0.1
   sleep: -0.05
@@ -1384,7 +1387,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ea83c947df4d4bb028ce5163ffec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starting_money: 100
 --- !u!114 &713357580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2078,7 +2080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ea83c947df4d4bb028ce5163ffec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starting_money: 100
 --- !u!114 &1136130327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2242,7 +2243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ea83c947df4d4bb028ce5163ffec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starting_money: 100
 --- !u!114 &1241867175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2369,9 +2369,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a167b12366c11384ab87db99e2918581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inside: {fileID: 282950290}
+  capacity: 0
   doors:
   - {fileID: 1384362249}
-  inside: {fileID: 282950290}
   income: 2
   happy: -0.05
   sleep: -0.1
@@ -2430,8 +2431,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a167b12366c11384ab87db99e2918581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doors: []
   inside: {fileID: 0}
+  capacity: 0
+  doors: []
   income: 0
   happy: 0
   sleep: 0
@@ -2683,9 +2685,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a167b12366c11384ab87db99e2918581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inside: {fileID: 989856840}
+  capacity: 0
   doors:
   - {fileID: 1096370078}
-  inside: {fileID: 989856840}
   income: 0
   happy: 0.05
   sleep: 0.2
@@ -2723,10 +2726,10 @@ MonoBehaviour:
   exit: {fileID: 758428833}
   cure_amount: 0.5
   will_cure: 0
-  min_to_cure: 0.01
+  max_curable: 0
   cost: 1
   wait_time: 2
-  cure_cooldown: 10
+  recently_cured_cooldown: 0
 --- !u!136 &1560464854
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2911,8 +2914,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a167b12366c11384ab87db99e2918581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doors: []
   inside: {fileID: 0}
+  capacity: 0
+  doors: []
   income: 0
   happy: 0
   sleep: 0
@@ -2999,6 +3003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   build_cursor: {fileID: 2800000, guid: 919a041ebdb8fe446a6101376791b628, type: 3}
   bulldoze_cursor: {fileID: 2800000, guid: 2058ac077853043409645981a236843e, type: 3}
+  cost_label: {fileID: 0}
   rot_inc: 45
 --- !u!4 &1804109796
 Transform:
@@ -3158,8 +3163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a167b12366c11384ab87db99e2918581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doors: []
   inside: {fileID: 0}
+  capacity: 0
+  doors: []
   income: 0
   happy: 0
   sleep: 0
@@ -3264,7 +3270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 264ea83c947df4d4bb028ce5163ffec4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  starting_money: 100
 --- !u!114 &1918930972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3462,8 +3467,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a167b12366c11384ab87db99e2918581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doors: []
   inside: {fileID: 0}
+  capacity: 0
+  doors: []
   income: 0
   happy: 0
   sleep: 0
@@ -3564,8 +3570,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a167b12366c11384ab87db99e2918581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doors: []
   inside: {fileID: 0}
+  capacity: 0
+  doors: []
   income: 0
   happy: 0
   sleep: 0

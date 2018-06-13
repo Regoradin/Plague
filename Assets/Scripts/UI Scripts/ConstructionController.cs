@@ -19,6 +19,9 @@ public class ConstructionController : MonoBehaviour {
     {
         cost_label.gameObject.SetActive(false);
         cam = Camera.main;
+
+        //TESTING PURPOSES ONLY
+        MoneyManager.Money = 1000;
     }
 
     void Update()
@@ -62,7 +65,8 @@ public class ConstructionController : MonoBehaviour {
             }
             if (bulldozing)
             {
-                Cursor.SetCursor(bulldoze_cursor, Vector2.zero, CursorMode.Auto);
+                //sets hotspot to middle for bulldoze for now
+                Cursor.SetCursor(bulldoze_cursor, Vector2.one * 24, CursorMode.Auto);
 
                 if (Input.GetMouseButtonDown(0) && hit.collider)
                 {

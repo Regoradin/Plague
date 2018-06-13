@@ -53,6 +53,8 @@ public class Person : MonoBehaviour {
 		yield return new WaitForSeconds(time);
 		recently_cured = false;
 	}
+  //  [HideInInspector]
+    public bool going_to_hospital = false;
 
     private void Awake()
     {
@@ -263,5 +265,19 @@ public class Person : MonoBehaviour {
     public void Infect()
     {
         StartCoroutine(Disease());
+    }
+
+    public void Cure()
+    {
+        StopCoroutine("Disease");
+
+        //resets navigation masks
+        int plagueMask = NavMesh.GetAreaFromName("Plague");
+        int healthyMask = NavMesh.GetAreaFromName("Healthy");
+        nav_agent.areaMask = nav_agent.areaMask | (1 << healthyMask);
+        nav_agent.areaMask = nav_agent.areaMask & ~(1 << plagueMask);
+
+        disease = 0;
+
     }
 }

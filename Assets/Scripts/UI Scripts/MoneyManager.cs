@@ -18,13 +18,4 @@ public class MoneyManager : MonoBehaviour {
             money = (float)Math.Round(value, 2);
         }
     }
-
-    public float starting_money;
-
-    private void Start()
-    {
-        money = starting_money;
-    }
-
-
 }

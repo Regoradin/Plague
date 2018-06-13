@@ -45,7 +45,6 @@ public class CostLabel : MonoBehaviour {
     /// </summary>
     public void LowFunds()
     {
-        Debug.Log("color 1");
         showing_low_funds = true;
         Invoke("ResetColor", low_fund_time);
     }

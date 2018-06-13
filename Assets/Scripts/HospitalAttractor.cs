@@ -21,7 +21,6 @@ public class HospitalAttractor : MonoBehaviour {
             {
                 if (person.disease > 0)
                 {
-                    Debug.Log("Attracting: " + person.name);
                     person.nav_agent.SetDestination(parent_coll.bounds.center);
                     person.going_to_hospital = true;
                 }

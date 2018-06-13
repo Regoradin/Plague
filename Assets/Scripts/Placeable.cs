@@ -23,6 +23,7 @@ public class Placeable : MonoBehaviour {
         {
             script.enabled = false;
         }
+        this.enabled = true;
         foreach(NavMeshObstacle obst in GetComponentsInChildren<NavMeshObstacle>())
         {
             obst.enabled = false;

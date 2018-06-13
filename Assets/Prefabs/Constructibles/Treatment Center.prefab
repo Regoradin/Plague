@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4680839092660034}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Inside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4266821166449274}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,8 +56,25 @@ GameObject:
   - component: {fileID: 208948722589288108}
   - component: {fileID: 114762236009834970}
   - component: {fileID: 114778410320778178}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Treatment Center
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1549955616192280
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4442476814433608}
+  - component: {fileID: 33028699548700762}
+  - component: {fileID: 23261402478720150}
+  m_Layer: 0
+  m_Name: Entrance Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,6 +110,19 @@ Transform:
   m_Father: {fileID: 4508868195808162}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4442476814433608
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1549955616192280}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.6}
+  m_LocalScale: {x: 0.44, y: 0.2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4508868195808162}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4508868195808162
 Transform:
   m_ObjectHideFlags: 1
@@ -100,12 +130,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1450723679740814}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 17.22}
+  m_LocalPosition: {x: 61.891457, y: 0, z: -30.889494}
   m_LocalScale: {x: 3, y: 15, z: 3}
   m_Children:
   - {fileID: 4976839727118696}
   - {fileID: 4680839092660034}
   - {fileID: 4266821166449274}
+  - {fileID: 4442476814433608}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -135,6 +166,41 @@ Transform:
   m_Father: {fileID: 4508868195808162}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23261402478720150
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1549955616192280}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 2100000, guid: 74c3c1baa2e9fee40a1ae448ec63c24c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23874136579193840
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -170,6 +236,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!33 &33028699548700762
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1549955616192280}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33695252096571778
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -230,10 +303,10 @@ MonoBehaviour:
   exit: {fileID: 4266821166449274}
   cure_amount: 0.05
   will_cure: 1
-  max_curable: 0.05
+  max_curable: 0.1
   cost: 100
   wait_time: 5
-  recently_cured_cooldown: 3
+  recently_cure_cooldown: 0
 --- !u!114 &114778410320778178
 MonoBehaviour:
   m_ObjectHideFlags: 1

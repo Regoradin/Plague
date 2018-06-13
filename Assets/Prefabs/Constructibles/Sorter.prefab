@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 208273496380272744}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Intersectable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 208031308247782314}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Intersectable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1278945505937210}
   m_LocalRotation: {x: -0, y: 0.343045, z: -0, w: 0.93931895}
-  m_LocalPosition: {x: -11.7, y: 0, z: 13.4}
+  m_LocalPosition: {x: -3.8344402, y: 0.33000004, z: 25.160055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4099665916691826}
@@ -364,7 +364,7 @@ OffMeshLink:
   m_CostOverride: -1
   m_BiDirectional: 0
   m_Activated: 1
-  m_AutoUpdatePositions: 0
+  m_AutoUpdatePositions: 1
 --- !u!191 &191216763242902968
 OffMeshLink:
   m_ObjectHideFlags: 1
@@ -380,7 +380,7 @@ OffMeshLink:
   m_CostOverride: -1
   m_BiDirectional: 0
   m_Activated: 1
-  m_AutoUpdatePositions: 0
+  m_AutoUpdatePositions: 1
 --- !u!208 &208031308247782314
 NavMeshObstacle:
   m_ObjectHideFlags: 1

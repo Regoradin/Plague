@@ -112,9 +112,13 @@ public class ConstructionController : MonoBehaviour {
         if (placeable.is_placeable && MoneyManager.Money >= placeable.cost)
         {
             //cost can't be subtracted from money here because it might change with wall type placeables.
-            placeable.Build();
             placeable.cost_label = cost_label;
+            placeable.Build();
             obj = null;
+        }
+        else
+        {
+            cost_label.LowFunds();
         }
     }
 }

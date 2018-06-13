@@ -68,6 +68,7 @@ public class Placeable : MonoBehaviour {
         }
         else
         {
+            cost_label.LowFunds();
             return;
         }
 

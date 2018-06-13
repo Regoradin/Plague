@@ -250,7 +250,7 @@ MonoBehaviour:
   max_curable: 0
   cost: 50
   wait_time: 3
-  recently_cured_cooldown: 6
+  cure_cooldown: 0
 --- !u!136 &136686933419149846
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -35,7 +35,7 @@ public class Person : MonoBehaviour {
 
     public float ambient_sleep_loss;
 
-	public bool recently_cured;
+	private bool recently_cured;
 	public bool Recently_cured
 	{
 		get

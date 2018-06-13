@@ -17,7 +17,7 @@ public class HospitalAttractor : MonoBehaviour {
         if (enabled)
         {
             Person person = other.GetComponent<Person>();
-            if (person)
+            if (person && !person.Recently_cured)
             {
                 if (person.disease > 0)
                 {

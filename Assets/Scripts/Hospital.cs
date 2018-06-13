@@ -12,7 +12,7 @@ public class Hospital : MonoBehaviour {
 	public float max_curable;
 	public float cost;
 	public float wait_time;
-	public float cure_cooldown;
+	public float recently_cure_cooldown;
 
 	private List<Person> persons_waiting;
 
@@ -26,7 +26,7 @@ public class Hospital : MonoBehaviour {
         if (enabled)
         {
             Person person = other.GetComponent<Person>();
-            if (person && person.going_to_hospital)
+            if (person && person.going_to_hospital && !person.Recently_cured)
             {
                 person.going_to_hospital = false;
 
@@ -60,7 +60,7 @@ public class Hospital : MonoBehaviour {
 		}
 		persons_waiting.Remove(person);
 
-		person.SetCureTimer(cure_cooldown);
+		person.SetCureTimer(recently_cure_cooldown);
 
 		person.nav_agent.Warp(exit.position);
 		person.nav_agent.enabled = true;

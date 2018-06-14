@@ -1,0 +1,47 @@
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~CREATIVE TITLE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+So you've got a city full of people, and some of them have a nondescript plague, which is unfortunate.
+Without intervention the plague will spread to everone and then they will die. This is bad, because when
+people die you lose money, and when you run out of money you lose the game, and that is of course bad.
+Also dead people can't do work, which means you get less money, which is extra bad.
+
+Thus, in order to stop the nondescript plague, you have several things that you can build. These structures
+are built by clicking the corresponding button, and then clicking where you want to put them. If you change
+your mind, right click to clear your selection.
+
+The most basic of these constructions are walls. Walls stop people from going places, because people can't 
+go through walls. This could be useful in quarantining or streamlining people as you see fit.
+
+For even more capable quaranting, there is the sorter. This handy device only allows people to go past in one
+direction, and then splits them into people who are infected with the plague and people who are healthy. This
+is slightly time consuming, beware of traffic jams.
+
+In order to properly treat the disease, hospitals and treatment centers can be built. Anyone infected with the
+plague who passes near either of these buildings will go into them and recieve medical attention. Hospitals can
+reduce the symptoms of the plague, but cannot actually cure it. Treatment centers can cure the disease, but only
+if the symptoms are significantly reduced. For this reason, they are only effective if the disease is caught very
+early, or if ample hospital care is provided. For every patient treated at either of these facilities, you
+must pay some expense.
+
+If you wish to destroy a building that you have placed, the bulldoze option can be used. This will refund a portion
+of the building's price. The bulldoze tool can also be used to remove corpses, which is convenient because corpses
+are very good at spreading the plague.
+
+
+~~~~~~~RANDOM THINGS THAT YOU DON'T TECHNICALLY NEED TO KNOW BUT MAY BE OF INTEREST~~~~~~~
+
+The green buildings are houses, the red buildings are workplaces, and the blue buildings are generic recreational places.
+People will go to their house and/or recreational areas in order to keep their personal sleep and/or happiness above
+a certain level, and will otherwise go to their workplace. This is good, because they only make you money at work,
+so expect income to drop if you barricade work buildings. 
+
+The settings at the start of the game define the starting population and basic plague characteristics. The population
+is fairly obvious, and the initial infected is just the number of people who start off with the plague.
+Growth rate is how quickly the plague progresses in an individual. A growth rate of 0 won't do anything every,
+a growth rate of 1 will kill a person the second they contract the plague. Infection rate is the chance
+for everyone around a plague victim to become infected with the plague. This chance is calculated every
+few seconds, and corresponds with the particles that can be seen coming from infected people.
+
+Feel free to mess with these values pretty dramatically and see what happens, I haven't really seen how the gameplay
+works at various settings, although performance might have some issues if the defaults are exceeded dramatically.
+Enjoy!

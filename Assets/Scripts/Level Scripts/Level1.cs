@@ -15,7 +15,19 @@ public class Level1 : MonoBehaviour {
 
     public int initial_infected;
 
-	private void Start()
+    public void SetPopulation(string pop)
+    {
+        Debug.Log(pop);
+        population = int.Parse(pop);
+    }
+    public void SetInitialInfected(string infected)
+    {
+        Debug.Log(infected);
+        initial_infected = int.Parse(infected);
+    }
+
+
+	public void StartLevel()
 	{
 		homes = new List<Building>();
 		homes.AddRange(homes_parent.GetComponentsInChildren<Building>());

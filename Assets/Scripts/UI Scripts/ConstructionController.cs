@@ -20,8 +20,6 @@ public class ConstructionController : MonoBehaviour {
         cost_label.gameObject.SetActive(false);
         cam = Camera.main;
 
-        //TESTING PURPOSES ONLY
-        MoneyManager.Money = 1000;
     }
 
     void Update()

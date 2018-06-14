@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Level1 : MonoBehaviour {
 
@@ -15,6 +17,11 @@ public class Level1 : MonoBehaviour {
 
     public int initial_infected;
 
+    public GameObject loss_ui;
+    public Text loss_text;
+    public Text day_count;
+    private bool lost = false;
+
     public void SetPopulation(string pop)
     {
         Debug.Log(pop);
@@ -26,8 +33,52 @@ public class Level1 : MonoBehaviour {
         initial_infected = int.Parse(infected);
     }
 
+    public void ResetLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //reset statics
+        MoneyManager.Money = 0;
+        DayManager.day = 0;
+        PersonManager.population = new List<Person>();
+        PersonManager.deaths = 0;
 
-	public void StartLevel()
+    }
+
+    private void Start()
+    {
+        loss_ui.SetActive(false);
+    }
+    private void Update()
+    {
+        //Lose Conditions
+        if(MoneyManager.Money < 0)
+        {
+            Lose();
+        }
+    }
+    private void Lose()
+    {
+        if (!lost)
+        {
+            lost = true;
+            loss_ui.SetActive(true);
+            day_count.text = "You lasted " + DayManager.day + " days.";
+
+            StartCoroutine(FlashText(loss_text));
+        }
+    }
+    private IEnumerator FlashText(Text text)
+    {
+        while (true)
+        {
+            text.color = Color.red;
+            yield return new WaitForSeconds(2);
+            text.color = Color.black;
+            yield return new WaitForSeconds(2);
+        }
+    }
+    
+    public void StartLevel()
 	{
 		homes = new List<Building>();
 		homes.AddRange(homes_parent.GetComponentsInChildren<Building>());

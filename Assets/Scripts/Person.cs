@@ -23,6 +23,15 @@ public class Person : MonoBehaviour {
     public float infection_rate = .5f;
     public float cough_radius;
 
+    public void SetDiseaseRate(string rate)
+    {
+        disease_rate = float.Parse(rate);
+    }
+    public void SetInfectionRate(string rate)
+    {
+        infection_rate = float.Parse(rate);
+    }
+
     public Color healthy_color;
     public Color infected_color;
     public Color full_disease_color;

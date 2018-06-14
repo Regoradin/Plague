@@ -320,7 +320,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   is_placeable: 1
   cost_label: {fileID: 0}
-  cost: 300
+  cost: 1000
   sell_value: 100
   redderness: 0.8
   alphaness: 0.5

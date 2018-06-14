@@ -23,7 +23,12 @@ public class Person : MonoBehaviour {
     public float infection_rate = .5f;
     public float cough_radius;
 
+    public Color healthy_color;
+    public Color infected_color;
+    public Color full_disease_color;
+
     public GameObject corpse;
+    public float death_cost;
 
     private float happy;
     private float sleep;
@@ -53,7 +58,7 @@ public class Person : MonoBehaviour {
 		yield return new WaitForSeconds(time);
 		recently_cured = false;
 	}
-  //  [HideInInspector]
+    [HideInInspector]
     public bool going_to_hospital = false;
 
     private void Awake()
@@ -64,7 +69,7 @@ public class Person : MonoBehaviour {
 
         nav_agent = GetComponent<NavMeshAgent>();
 
-        rend.material.color = new Color(1f, 1f, 1f);
+        rend.material.color = healthy_color;
 
         int plagueMask = NavMesh.GetAreaFromName("Plague");
         int healthyMask = NavMesh.GetAreaFromName("Healthy");
@@ -235,7 +240,7 @@ public class Person : MonoBehaviour {
         while (disease < 1 && disease > 0)
         {
             disease += disease_rate;
-            rend.material.color = new Color(1f - disease, 1f - (disease/3), 1f - disease);
+            rend.material.color = Color.Lerp(infected_color, full_disease_color, disease);
 
             yield return new WaitForSeconds(1);
         }
@@ -254,11 +259,13 @@ public class Person : MonoBehaviour {
 		PersonManager.deaths++;
 		if (in_building)
 		{
-			Debug.Log("Dieing in building");
 			//prevents corpses from piling up in the nether
 			int i = Random.Range(0, dest_building.doors.Count);
 			transform.position = dest_building.doors[i].transform.position;
 		}
+
+        MoneyManager.Money -= death_cost;
+
         Instantiate(corpse, new Vector3(transform.position.x, 0, transform.position.z) , Quaternion.Euler(90, 0, Random.Range(0, 360)));
     }
 
@@ -278,6 +285,7 @@ public class Person : MonoBehaviour {
         nav_agent.areaMask = nav_agent.areaMask & ~(1 << plagueMask);
 
         disease = 0;
+        rend.material.color = healthy_color;
 
     }
 }

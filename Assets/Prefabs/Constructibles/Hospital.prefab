@@ -290,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   is_placeable: 1
   cost_label: {fileID: 0}
-  cost: 300
+  cost: 400
   sell_value: 150
   redderness: 0.8
   alphaness: 0.5
@@ -318,7 +318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inside: {fileID: 4068968256734300}
   exit: {fileID: 4542942362805358}
-  cure_amount: 0.5
+  cure_amount: 0.4
   will_cure: 0
   max_curable: 0
   cost: 50

@@ -1224,7 +1224,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1671,7 +1671,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -1925,7 +1925,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -2030,7 +2030,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -2288,7 +2288,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -2646,7 +2646,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 657490648}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.599998, y: -0.5, z: 6.470001}
+  m_LocalPosition: {x: -19.599998, y: 4, z: 6.470001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 593460071}
@@ -3047,7 +3047,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -3165,7 +3165,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -3687,7 +3687,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -4158,7 +4158,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -4604,7 +4604,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -4845,7 +4845,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -5206,7 +5206,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -5846,7 +5846,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -5923,7 +5923,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -6041,7 +6041,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.8773585, g: 0.7797193, b: 0.45937166, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -6690,7 +6690,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Hospital
 
-    $300'
+    $400'
 --- !u!222 &1804022317
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7209,7 +7209,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Treatment Center
 
-    $300'
+    $1000'
 --- !u!222 &1946009455
 CanvasRenderer:
   m_ObjectHideFlags: 0

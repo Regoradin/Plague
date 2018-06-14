@@ -55,7 +55,7 @@ public class Hospital : MonoBehaviour {
 			}
 			if (will_cure && person.disease <= max_curable)
 			{
-				person.disease = 0;
+                person.Cure();
 			}
 		}
 		persons_waiting.Remove(person);
@@ -66,7 +66,6 @@ public class Hospital : MonoBehaviour {
 		person.nav_agent.enabled = true;
 		person.in_building = false;
 		person.ChooseDest();
-        Debug.Log(person.dest_building);
 
 	}
 }

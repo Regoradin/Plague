@@ -297,4 +297,9 @@ public class Person : MonoBehaviour {
         rend.material.color = healthy_color;
 
     }
+
+    private void TestFunc(){
+	//This function tests magit stuff. Completely unrelated to
+	//what’s going on now.
+    }
 }

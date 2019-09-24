@@ -31,6 +31,12 @@ public class DayManager : MonoBehaviour {
 			day++;
 		}
 	}
+
+	private void Hello(){
+		//why are my indents 8 now all of the sudden? That’s
+		//weird. I really like the text wrapping that does,
+		//it’s pretty grand
+	}
 	private IEnumerator CycleIsDay()
 	{
 		while (true)
@@ -38,6 +44,10 @@ public class DayManager : MonoBehaviour {
 			yield return new WaitForSeconds(day_length / 2);
 			is_day = !is_day;
 		}
+	}
+
+	private void TestingHereToo(){
+		//This one is also useless for magiting
 	}
 
 }
